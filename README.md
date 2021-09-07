@@ -42,8 +42,18 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 * Run via kubectl
 
 
-# My local machine is out of space
+
+### My local machine is out of space
+
+I am using a Windows 10 machine with a small SSD. In my case, I had issues while trying start minikube cluster. Then, I had to delete current clustes and start with less memory:
+
+```
 minikube delete --all
 minikube start --disk-size=5000MB
-# after
+
+```
+### after
+To delte minikude cluster:
+```
 minikube delete
+```
