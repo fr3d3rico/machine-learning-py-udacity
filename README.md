@@ -1,4 +1,4 @@
-<include a CircleCI status badge, here>
+Circleci Status [![CircleCI](https://circleci.com/gh/fr3d3rico/machine-learning-py-udacity.svg?style=shield)](https://circleci.com/gh/fr3d3rico/machine-learning-py-udacity)
 
 ## Project Overview
 
