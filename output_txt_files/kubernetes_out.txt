@@ -1,0 +1,46 @@
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)
+λ kubectl expose pod udacity-ml-api --type=LoadBalancer --port=8080                                                           
+service/udacity-ml-api exposed                                                                                                
+                                                                                                                              
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)
+λ kubectl port-forward service/udacity-ml-api 8000                                                                            
+error: Service udacity-ml-api does not have a service port 8000                                                               
+                                                                                                                              
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)
+λ kubectl get all                                                                                                             
+NAME                 READY   STATUS    RESTARTS   AGE                                                                         
+pod/udacity-ml-api   1/1     Running   0          10m                                                                         
+                                                                                                                              
+NAME                     TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE                                   
+service/kubernetes       ClusterIP      10.96.0.1        <none>        443/TCP          11m                                   
+service/udacity-ml-api   LoadBalancer   10.103.109.202   <pending>     8080:30009/TCP   60s                                   
+                                                                                                                              
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)
+λ kubectl delete service/udacity-ml-api                                                                                       
+service "udacity-ml-api" deleted                                                                                              
+                                                                                                                              
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)
+λ kubectl expose pod udacity-ml-api --type=LoadBalancer --port=80                                                             
+service/udacity-ml-api exposed                                                                                                
+                                                                                                                              
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)
+λ kubectl port-forward service/udacity-ml-api 8000                                                                            
+error: Service udacity-ml-api does not have a service port 8000                                                               
+                                                                                                                              
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)
+λ kubectl port-forward service/udacity-ml-api 8000:80                                                                         
+Forwarding from 127.0.0.1:8000 -> 80                                                                                          
+Forwarding from [::1]:8000 -> 80                                                                                              
+Handling connection for 8000     
+
+
+
+# OTHER TERMINAL
+C:\fred\estudo\udacity-course\cloud-devops-engineer\DevOps_Microservices\project-ml-microservice-kubernetes (master -> origin)                                          
+λ curl -d "{\"CHAS\":{ \"0\":0 },\"RM\":{\"0\":6.575},\"TAX\":{\"0\":296.0},\"PTRATIO\":{\"0\":15.3},\"B\":{\"0\":396.9},\"LSTAT\":{\"0\":4.98}}" -H "Content-Type: appl
+ication/json" -X POST http://localhost:8000/predict                                                                                                                     
+{                                                                                                                                                                       
+  "prediction": [                                                                                                                                                       
+    20.35373177134412                                                                                                                                                   
+  ]                                                                                                                                                                     
+}                                                                                                                                                                       
